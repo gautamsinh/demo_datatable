@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Data Table | Demo</title>
+    <!-- <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.19/css/jquery.dataTables.min.css"/> -->
+    <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"/>
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.19/css/dataTables.bootstrap.min.css"/>
+    <script src="https://code.jquery.com/jquery-3.3.1.js" type="text/javascript"></script>
+    <script src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdn.datatables.net/1.10.19/js/dataTables.bootstrap.min.js"></script>
+</head>
+<body>
+    <div class="container">
+        <table id="demo_datatable" class="table table-bordered">
+            <thead>
+                <tr>
+                    <th>Sr no.</th>
+                    <th>Name</th>
+                    <th>Position</th>
+                    <th>Office</th>
+                    <th>Age</th>
+                    <th>Start date</th>
+                    <th>Salary</th>
+                </tr>
+            </thead>
+            <tbody>
+            </tbody>   
+        </table>
+    </div>
+    <script type="text/javascript">
+        $(document).ready(function() {
+             var tableCoulumns=[
+                { data: 'id'},
+                { data: 'name'},
+                { data: 'position'},
+                { data: 'office'},
+                { data: 'age'},
+                { data: 'join_date'},
+                { data: 'salary'},
+            ];
+            $('#demo_datatable').DataTable( {
+                
+                "bLengthChange":true,
+                "processing": true,
+                "serverSide": true,
+                "ajax": {
+                    "type":"post",
+                    "url": 'ajax/demo.dataTable.ajax.php',
+                     "data": function (d) {
+                    },
+                },
+                "aoColumns":tableCoulumns,
+            });;
+        } );
+    </script>
+</body>
+</html>
